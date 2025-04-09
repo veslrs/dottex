@@ -1,0 +1,46 @@
+%% ============================================================================
+%% Mathematics Typesetting Configuration
+%% Copyright (c) 2025 Fang Zeyuan (@veslrs)
+%% ----------------------------------------------------------------------------
+%% Tips for math packages: 
+%% - Box around equation: \boxed{}
+%% - Spacing in mathmode: \quad
+%% - Calligraphy letters: \mathcal{}
+%% - Big curly bracket for cases: \begin{dcases}
+%%                                  case 1, \\
+%% 									case 2
+%%                                \end{dcases}
+%% - Bold math symbols: \bm{}
+%%                      try \boldsymbol{} if \bm returns unexpected result
+%% - Underline: \underline{}
+%% - Hyperbolic functions: \sech, \csch
+%% - Ceil/floor operator: \ceil{}, \floor{}
+%% - Absolute operator: \abs{}
+%% - Norm operator: \norm{}
+%% - Permutation/combination:   \perm{k} = \frac{n!}{(n-k)!}\quad
+%%                              \perm[m]{k} = \frac{m!}{(m-k)!}\quad
+%%                              \comb{k} = \frac{n!}{k!(n-k)!}\quad
+%%                              \comb[m]{k} = \frac{m!}{k!(m-k)!}\quad
+%% ============================================================================
+
+\usepackage{amsmath,amsfonts,stmaryrd,amssymb,mathtools,amsbsy,bm}
+
+%% Fix of warning: LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
+%%                 using `U/stmry/m/n' instead on input line ...
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+
+\DeclareMathOperator{\sech}{sech}	                            %% \sech
+\DeclareMathOperator{\csch}{csch}	                            %% \csch
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}                    %% \ceil{}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}                 %% \floor{}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}                   %% \abs{}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}                  %% \norm{}
+
+\newcommand\perm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}     %% \perm{k}, \perm[m]{k}
+\newcommand\comb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}     %% \comb{k}, \comb[m]{k}
+
+\let\bar\overline	                                            %% Wider bar as default
+\let\tld\widetilde                                              %% Wider tilde as default
+\let\eps\varepsilon                                             %% Curly epsilon as default

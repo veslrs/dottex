@@ -1,0 +1,26 @@
+%% ============================================================================
+%% General Typesetting Configuration
+%% Copyright (c) 2025 Fang Zeyuan (@veslrs)
+%% ----------------------------------------------------------------------------
+%% Tips for packages: 
+%% - Text underline with word wrap: \ul{}
+%% - TODO list:     \begin{itemize}
+%%                      \item Immediate plan of action.
+%%                      \begin{todolist}
+%%                          \item[\done] Frame the problem
+%%                          \item Write solution
+%%                          \item[\wontfix] profit
+%%                      \end{todolist}
+%%                  \end{itemize}
+%% ============================================================================
+
+\usepackage{soul}   %% \ul{}
+
+%% Todo list with checkbox (!! math.tex REQUIRED !!)
+\usepackage{enumitem,pifont}
+\setlist[todolist]{label=$\square$}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
