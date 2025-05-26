@@ -1,0 +1,120 @@
+%% ===================================================================
+%% Basic Typesetting for Articles/Reports
+%% Copyright (c) 2025 Fang Zeyuan (@veslrs)
+%% -------------------------------------------------------------------
+%% TODO: Add comments
+%% -------------------------------------------------------------------
+%% Tips for math packages: 
+%% - Box around equation: \boxed{}
+%% - Spacing in mathmode: \quad
+%% - Calligraphy letters: \mathcal{}
+%% - Big curly bracket for cases: \begin{dcases}
+%%                                  case 1, \\
+%%                                  case 2
+%%                                \end{dcases}
+%% - Bold math symbols: \bm{}
+%%                      try \boldsymbol{} if \bm behaves unexpectly
+%% - Underline: \underline{}
+%% - Hyperbolic functions: \sech, \csch
+%% - Ceil/floor operator: \ceil{}, \floor{}
+%% - Absolute operator: \abs{}
+%% - Norm operator: \norm{}
+%% - Permutation/combination:   \perm{k} = \frac{n!}{(n-k)!}\quad
+%%                              \perm[m]{k} = \frac{m!}{(m-k)!}\quad
+%%                              \comb{k} = \frac{n!}{k!(n-k)!}\quad
+%%                              \comb[m]{k} = \frac{m!}{k!(m-k)!}\quad
+%% ===================================================================
+
+%% ===================================================================
+%% Typography
+%% -------------------------------------------------------------------
+\documentclass[11pt, oneside]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype} 
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+\renewcommand{\sectionmark}[1]{%
+    \markboth{#1}{}%
+}
+
+\renewcommand{\subsectionmark}[1]{%
+    \markright{#1}%
+}
+
+\fancyhead[C]{\nouppercase{\leftmark}}
+\fancyhead[R]{\thepage}
+
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+
+%% Math
+%% -------------------------------------------------------------------
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsbsy}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{stmaryrd}
+\usepackage{physics}
+
+%% Fix of warning: LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
+%%                 using `U/stmry/m/n' instead on input line ...
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+
+\DeclareMathOperator{\sech}{sech}                               %% \sech
+\DeclareMathOperator{\csch}{csch}	                            %% \csch
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}                    %% \ceil{}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}                 %% \floor{}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}                   %% \abs{}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}                  %% \norm{}
+
+\newcommand\perm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}     %% \perm{k}, \perm[m]{k}
+\newcommand\comb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}     %% \comb{k}, \comb[m]{k}
+
+\let\bar\overline	                                            %% Wider bar as default
+\let\tld\widetilde                                              %% Wider tilde as default
+\let\eps\varepsilon                                             %% Curly epsilon as default
+
+%% Theorem Environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+%% Graphics
+%% -------------------------------------------------------------------
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+%% Fix of error: undefined control sequence \definecolor
+\usepackage{xcolor}
+
+%% Miscellaneous
+%% -------------------------------------------------------------------
+\usepackage[hidelinks]{hyperref}
+\usepackage{soul}
+
+%% Todo list with checkbox
+\usepackage{enumitem,pifont}
+\setlist[todolist]{label=$\square$}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+%% ===================================================================
