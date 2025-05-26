@@ -28,7 +28,7 @@
 %% ===================================================================
 %% Typography
 %% -------------------------------------------------------------------
-\documentclass[11pt, oneside]{article}
+\documentclass[11pt, twoside]{article}
 \usepackage[a4paper, margin=1in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -39,15 +39,11 @@
 \pagestyle{fancy}
 \fancyhf{}
 
-\renewcommand{\sectionmark}[1]{%
-    \markboth{#1}{}%
-}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
 
-\renewcommand{\subsectionmark}[1]{%
-    \markright{#1}%
-}
-
-\fancyhead[C]{\nouppercase{\leftmark}}
+\fancyhead[OC]{\nouppercase{\leftmark}}
+\fancyhead[EC]{\nouppercase{\rightmark}}
 \fancyhead[R]{\thepage}
 
 \renewcommand{\footrulewidth}{0pt}
@@ -65,14 +61,8 @@
 %%                 using `U/stmry/m/n' instead on input line ...
 \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
 
-\DeclareMathOperator{\sech}{sech}                               %% \sech
-\DeclareMathOperator{\csch}{csch}	                            %% \csch
-
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}                    %% \ceil{}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}                 %% \floor{}
-
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}                   %% \abs{}
-\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}                  %% \norm{}
 
 \newcommand\perm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}     %% \perm{k}, \perm[m]{k}
 \newcommand\comb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}     %% \comb{k}, \comb[m]{k}
@@ -108,13 +98,4 @@
 %% -------------------------------------------------------------------
 \usepackage[hidelinks]{hyperref}
 \usepackage{soul}
-
-%% Todo list with checkbox
-\usepackage{enumitem,pifont}
-\setlist[todolist]{label=$\square$}
-\newcommand{\cmark}{\ding{51}}
-\newcommand{\xmark}{\ding{55}}
-\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}
-\hspace{-2.5pt}}
-\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
 %% ===================================================================
