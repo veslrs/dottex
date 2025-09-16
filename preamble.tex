@@ -1,0 +1,180 @@
+\iffalse
+    Preambles
+    Copyright (c) 2025 Fang Zeyuan (@veslrs)
+
+    Tips for math packages: 
+    - Box around equation: \boxed{}
+    - Spacing in mathmode: \quad
+    - Calligraphy letters: \mathcal{}
+    - Big curly bracket for cases: \begin{dcases}
+                                     case 1, \\
+                                     case 2
+                                   \end{dcases}
+    - Bold math symbols: \bm{}
+                         try \boldsymbol{} if \bm behaves unexpectly
+    - Underline: \underline{}
+    - Hyperbolic functions: \sech, \csch
+    - Ceil/floor operator: \ceil{}, \floor{}
+    - Absolute operator: \abs{}
+    - Norm operator: \norm{}
+    - Permutation/combination:   \perm{k} = \frac{n!}{(n-k)!}\quad
+                                 \perm[m]{k} = \frac{m!}{(m-k)!}\quad
+                                 \comb{k} = \frac{n!}{k!(n-k)!}\quad
+                                 \comb[m]{k} = \frac{m!}{k!(m-k)!}\quad
+\fi
+
+% Math
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amsbsy}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{stmaryrd}
+\usepackage{physics}
+
+% Fix of warning: LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
+%                 using `U/stmry/m/n' instead on input line ...
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}                    %% \ceil{}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}                 %% \floor{}
+
+\newcommand\perm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}}     %% \perm{k}, \perm[m]{k}
+\newcommand\comb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}}     %% \comb{k}, \comb[m]{k}
+
+\let\bar\overline	                                            %% Wider bar as default
+\let\tld\widetilde                                              %% Wider tilde as default
+\let\eps\varepsilon                                             %% Curly epsilon as default
+
+% Theorem Environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+% Customised: Problem
+\theoremstyle{problem}
+\newtheorem{problem}[theorem]{Problem}
+% Customised: Case
+\theoremstyle{case}
+\newtheorem{case}[theorem]{Case}
+
+
+% Macros: common sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Graphics & Tables
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+% Fix of error: undefined control sequence \definecolor
+\usepackage{xcolor}
+
+% Better captions
+\usepackage{caption}
+\captionsetup{
+    labelfont=bf,
+    singlelinecheck=false,
+    labelsep=space,
+    skip=2pt
+}
+
+% Fancy tables
+\usepackage{tabularray}	% Better tables [https://ctan.org/pkg/tabularray?lang=en]
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{multirow}
+\usepackage{array}
+
+% Rotate page
+\usepackage{pdflscape}
+
+% Subfigures
+\usepackage{subcaption}
+\captionsetup[sub]{
+    labelsep=space,
+    subrefformat=brace,
+    singlelinecheck=on,
+    justification=justified
+}
+
+% Better cross-references
+\usepackage[hidelinks]{hyperref}
+
+% capitalise reference ``Chapter'', ``Section'', ``Subsection''
+\renewcommand{\chapterautorefname}{Chapter}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Subsection}
+
+% List of figures/tables
+\usepackage{calc}
+\usepackage{tocloft}
+\usepackage[nottoc]{tocbibind}
+\usepackage{emptypage}
+% Figures
+\renewcommand*{\cftfigname}{\figurename\space}
+\renewcommand*{\cftfigaftersnum}{~\hfill}
+\renewcommand{\cftfigpresnum}{\cftfigname}
+\setlength{\cftfigindent}{0pt}
+\setlength{\cftfignumwidth}{\widthof{\cftfigname 00~\textendash~}}
+% Tables
+\renewcommand*{\cfttabname}{\tablename\space}
+\renewcommand*{\cfttabaftersnum}{~\hfill}
+\renewcommand{\cfttabpresnum}{\cfttabname}
+\setlength{\cfttabindent}{0pt}
+\setlength{\cfttabnumwidth}{\widthof{\cfttabname 00~\textendash~}}
+
+% Underscore with line wrap
+\usepackage{soul}
+
+% Enumerate
+\usepackage{enumerate} 
+
+% Algorithm/Pseudocode
+\usepackage{algorithm2e}
+\RestyleAlgo{ruled}
+\SetKwComment{Comment}{/* }{ */}
+
+% include pdf pages [https://ctan.org/pkg/pdfpages?lang=en]
+% Usecase: 
+%       all pages: \includepdf[pages=-]{typesetting/cover.pdf}
+%       single pages: \includepdf[pages={a}]{typesetting/cover.pdf}
+%       specific range: \includepdf[pages={a-b}]{typesetting/cover.pdf}
+\usepackage{pdfpages}
+
+% clear page to left (for back cover)
+\newcommand*\cleartoleftpage{%
+    \clearpage
+    \ifodd\value{page}\hbox{}\newpage\fi
+}
+
+% code listing, C style
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+    language=C,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=4
+}

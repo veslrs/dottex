@@ -1,0 +1,52 @@
+\iffalse
+    Documentclass: book
+    Copyright (c) 2025 Fang Zeyuan (@veslrs)
+\fi
+
+\documentclass[11pt,twoside,openright]{book}
+
+\usepackage[a4paper,
+            inner=35mm,
+            outer=35mm,
+            top=25mm,
+            bottom=25mm,
+            bindingoffset=0mm
+           ]{geometry}
+           
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype} 
+
+% Header & Footer
+\usepackage{fancyhdr}
+\pretocmd{\frontmatter}{\pagestyle{plain}}{}{}
+\pretocmd{\mainmatter}{\pagestyle{fancy}}{}{}
+% \pagestyle{fancy}
+% Clear default header/footer
+\fancyhf{}
+
+% 1) Remove the automatic numbers from \leftmark (chapter) and \rightmark (section):
+\renewcommand{\chaptermark}[1]{%
+    \markboth{#1}{}%
+}
+\renewcommand{\sectionmark}[1]{%
+    \markright{#1}%
+}
+
+%% Header: left = document title, center = section, right = date
+%%\fancyhead[L]{\textit{Professional Math Document}}
+%\fancyhead[C]{\nouppercase{\leftmark}}
+%\fancyhead[R]{\thepage}
+%% Footer: center = page number
+%%\fancyfoot[C]{\thepage}
+%% Optional: rule under header
+%%\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\footrulewidth}{0pt}
+%\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead[LE]{\thepage\quad\leftmark}  % Even pages: page # then chapter title
+\fancyhead[RO]{\rightmark\quad\thepage} % Odd pages: section title then page #
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
