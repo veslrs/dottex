@@ -1,0 +1,45 @@
+\iffalse
+    Title page
+    Copyright (c) 2025 Fang Zeyuan (@veslrs)
+
+    Usage: in document scope, for documentclass=article, do: `\printcover`
+                              for documentclass=book, do under \frontmatter: `\printcover`
+\fi
+
+\title{Title goes here....}
+\author{Your name...}
+\date{Month, yyyy}
+
+\makeatletter
+\newcommand{\printcover}{%
+    \begin{titlepage}
+        \begin{center}
+            \normalsize
+            \vspace{\stretch{1}}
+            
+            {\bfseries \@title}
+            
+            % Auxiliary
+            \vspace{\stretch{1}}
+            Submitted in partial fulfilment of the requirements for the\\
+            degree of Master of Science in Engineering \\[1em]
+            to\\[1em]  
+            DTU Sustain
+            
+            \vspace{\stretch{1}}            
+            \@author            
+            \vspace{\stretch{2}}
+            
+            Technical University of Denmark
+            
+            2800 Kgs. Lyngby
+            
+            \vspace{2em}
+            
+            \@date
+            \vspace{\stretch{1}}
+        \end{center}
+        
+    \end{titlepage}
+}
+\makeatother
